@@ -43,8 +43,15 @@
 
 .top .form-group {
     margin-bottom: 1.3rem;
-
+    position: relative;
 }
+.top .form-group i {
+    position: absolute;
+    bottom: 10%;
+    right: 0;
+    color: grey;
+}
+
 
 .top .form-text {
     text-align: right;
@@ -68,12 +75,16 @@ span:hover {
     height: 2rem;
     border-bottom: .1rem solid #20a5e2;
     transition: 700ms ease all;
-
+    padding-left: .5rem;
 }
 .top .form input:focus {
     outline: none;
     /* border-bottom: .2rem solid #20a5e2; */
     box-shadow:0 1px 0 0 #88d9fc;
+}
+
+.top .form-control i:focus {
+    opacity: 0;
 }
 
 .form {
