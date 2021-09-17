@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { AngularRoutingModule } from './angular-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { SignupComponent } from './components/signup/signup.component';
   ],
   imports: [
     BrowserModule,
-    AngularRoutingModule
+    AngularRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
