@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import {AngularFireAuth } from '@angular/fire/auth'
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IUser, IUserCredentails } from 'src/app/shared/models/user-interface';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class FirebaseService {
 
   userData: any;
 
-  constructor(private firebase: AngularFireAuth, private router: Router, private ngZone: NgZone) { 
+  constructor(private firebase: AngularFireAuth, private router: Router, private ngZone: NgZone, private toaster: ToastrService) {
     // this.firebase.authState.subscribe( user => {
     //   if (user) {
     //     this.userData = user;
@@ -43,11 +44,14 @@ export class FirebaseService {
     let {username, password} = credentials
     this.firebase.createUserWithEmailAndPassword(username, password).then(async (result) => {
       await this.sendEmailVerification();
+      this.toaster.success("Check email to validate");
       this.ngZone.run(() => {
         this.router.navigate(['dashboard'])
       });
     }).catch((error) => {
-      console.log(error.message);
+      let {code, message } = error;
+      console.log(code);
+      this.toaster.error(message);
     });
   }
 
@@ -55,6 +59,7 @@ export class FirebaseService {
     let { username, password } = credentials
     this.firebase.signInWithEmailAndPassword(username, password).then(result => {
       localStorage.setItem('user', JSON.stringify(result.user));
+      this.toaster.success("Success");
       this.ngZone.run(() => {
         this.router.navigate(['dashboard'])
       });
