@@ -1,0 +1,12 @@
+export interface IUserCredentails {
+    username: string;
+    password: string;
+}
+
+export interface IUser {
+    uid: string;
+    email: string;
+    displayName: string;
+    photoURL: string;
+    emailVerified: boolean
+}
