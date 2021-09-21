@@ -2,20 +2,20 @@
     <div class="wrapper">
         <div class="top">
             <h2>Tasks Sign up</h2>
-            <form action="" class="form">
+            <form #signUpForm="ngForm"  (ngSubmit)="onSubmit(signUpForm)" class="form">
                 <div class="form-group">
                     <i class="fas fa-envelope logo"></i>
-                    <input type="text" name="" id="" placeholder="Enter your email">
+                    <input type="text" name="" id="username" placeholder="Enter your email" ngModel name="username">
                 </div>
                 <div class="form-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="" id="" placeholder="********">
+                    <input type="password" name="" id="password" placeholder="********" ngModel name=password>
                 </div>
                 <div class="form-text">
                     <p>Already have an account <span routerLink="/login">Log in</span></p>
                 </div>
                 <div class="button">
-                    <button>Sign Up</button>
+                    <button [disabled]="!signUpForm.valid">Sign Up</button>
                 </div>
             </form>
         </div>
