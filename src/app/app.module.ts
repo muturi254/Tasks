@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HelloComponent } from './components/hello/hello.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { HelloComponent } from './components/hello/hello.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    HelloComponent
   ],
   imports: [
     BrowserModule,
